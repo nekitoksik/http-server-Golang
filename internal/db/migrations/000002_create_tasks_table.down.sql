@@ -1,0 +1,2 @@
+DROP INDEX IF EXISTS idx_tasks_points;
+DROP TABLE IF EXISTS tasks CASCADE;
