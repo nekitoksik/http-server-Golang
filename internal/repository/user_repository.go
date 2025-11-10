@@ -37,7 +37,6 @@ func (r *PostgresUserRepository) Create(ctx context.Context, user *domain.User) 
 	if result.Error != nil {
 		return 0, fmt.Errorf("failed to create new user: %w", result.Error)
 	}
-
 	return int(user.ID), nil
 }
 
@@ -47,7 +46,7 @@ func (r *PostgresUserRepository) FindByUsername(ctx context.Context, username st
 	result := r.db.WithContext(ctx).Where("username = ?", username).First(&user)
 
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-		return nil, errors.New("user is not found")
+		return nil, nil
 	}
 
 	if result.Error != nil {

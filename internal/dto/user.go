@@ -1,9 +1,10 @@
 package dto
 
 type UserStatusResponse struct {
-	ID       int    `json:"id"`
-	Username string `json:"username"`
-	Balance  int    `json:"balance"`
+	ID         int    `json:"id"`
+	Username   string `json:"username"`
+	Balance    int    `json:"balance"`
+	ReferrerID *int   `json:"referrer_id,omitempty"`
 }
 
 type LeaderboardUserDTO struct {

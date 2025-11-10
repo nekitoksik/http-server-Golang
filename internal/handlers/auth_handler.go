@@ -19,6 +19,16 @@ func NewAuthHandler(authService *services.AuthService) *AuthHandler {
 	}
 }
 
+// Register godoc
+// @Summary      Регистрация нового пользователя
+// @Description  Создает нового пользователя с username и password
+// @Tags         auth
+// @Accept       json
+// @Produce      json
+// @Param        request body dto.RegisterRequest true "Данные для регистрации"
+// @Success      201  {object}  map[string]interface{}  "Успешная регистрация"
+// @Failure      400  {object}  dto.ErrorResponse
+// @Router       /register [post]
 func (h *AuthHandler) Register(c *gin.Context) {
 	var req dto.RegisterRequest
 
@@ -42,6 +52,16 @@ func (h *AuthHandler) Register(c *gin.Context) {
 	})
 }
 
+// Login godoc
+// @Summary      Вход пользователя
+// @Description  Аутентификация пользователя и выдача JWT токенов
+// @Tags         auth
+// @Accept       json
+// @Produce      json
+// @Param        request body dto.LoginRequest true "Данные для входа"
+// @Success      200  {object}  dto.TokenResponse
+// @Failure      401  {object}  dto.ErrorResponse
+// @Router       /login [post]
 func (h *AuthHandler) Login(c *gin.Context) {
 	var req dto.LoginRequest
 
@@ -62,6 +82,16 @@ func (h *AuthHandler) Login(c *gin.Context) {
 	c.JSON(http.StatusOK, tokens)
 }
 
+// Logout godoc
+// @Summary      Выход пользователя
+// @Description  Отзыв refresh токена пользователя
+// @Tags         auth
+// @Accept       json
+// @Produce      json
+// @Security     BearerAuth
+// @Success      200  {object}  string
+// @Failure      401  {object}  dto.ErrorResponse
+// @Router       /api/logout [post]
 func (h *AuthHandler) Logout(c *gin.Context) {
 	userID, ok := middleware.GetUserIDFromContext(c)
 	if !ok {

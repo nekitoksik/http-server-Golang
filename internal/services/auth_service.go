@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"errors"
+	"fmt"
 	"user-service/internal/domain"
 	"user-service/internal/dto"
 	"user-service/internal/repository"
@@ -43,6 +44,13 @@ func (s *AuthService) Register(ctx context.Context, registerDto dto.RegisterRequ
 		Balance:      0,
 	}
 
+	userID, err := s.userRepo.Create(ctx, user)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create user: %w", err)
+	}
+
+	user.ID = userID
+
 	return user, nil
 }
 
@@ -62,7 +70,7 @@ func (s *AuthService) Login(ctx context.Context, userDto dto.LoginRequest) (*dto
 
 	accessToken, err := s.jwtService.GenerateAccessToken(user.ID, user.Username)
 	if err != nil {
-		return &dto.TokenResponse{}, errors.New("failed to generate access token")
+		return &dto.TokenResponse{}, fmt.Errorf("failed to generate access token: %w", err)
 	}
 
 	refrseshToken, err := s.jwtService.GenerateRefreshToken(user.ID, user.Username)

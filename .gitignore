@@ -1,0 +1,129 @@
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+server
+main
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Swagger generated files
+docs/
+docs/docs.go
+docs/swagger.json
+docs/swagger.yaml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker volumes
+db_data/
+postgres_data/
+pgdata/
+
+# Logs
+*.log
+logs/
+log/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Coverage reports
+coverage.txt
+coverage.html
+*.cover
+*.coverprofile
+
+# Build artifacts
+dist/
+build/
+*.tar.gz
+*.zip
+
+# Air live reload (if using)
+tmp/
+.air.toml
+
+# Backup files
+*.bak
+*.backup
+
+# Debug files
+debug
+debug.test
+__debug_bin
+
+# Certificate files (if not needed in repo)
+*.pem
+*.key
+*.crt
+*.cert
+
+# Config override files (if using)
+config.local.yaml
+config.override.yaml

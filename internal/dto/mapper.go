@@ -4,9 +4,10 @@ import "user-service/internal/domain"
 
 func ToUserStatusResponse(user *domain.User) UserStatusResponse {
 	return UserStatusResponse{
-		ID:       user.ID,
-		Username: user.Username,
-		Balance:  user.Balance,
+		ID:         user.ID,
+		Username:   user.Username,
+		Balance:    user.Balance,
+		ReferrerID: user.ReferrerID,
 	}
 }
 
